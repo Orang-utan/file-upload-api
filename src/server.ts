@@ -7,7 +7,7 @@ export const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors()); // TODO(ekzhang): revisit CORS headers
+app.use(cors());
 
 // API Routes
 app.use("/api/file", fileRouter);
