@@ -1,7 +1,6 @@
 import cors from "cors";
 import express from "express";
 import http from "http";
-import socketio from "socket.io";
 import fileRouter from "./routes/file.api";
 
 export const app = express();
