@@ -2,6 +2,9 @@
 
 Generic file upload infrastructure. Please email me for API key.
 
+### Motivation
+AWS S3 is a hassle to work with. Why not abstract it with an API?
+
 ### API Endpoints
 
 #### Single File Upload
