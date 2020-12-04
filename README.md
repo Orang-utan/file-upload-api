@@ -2,10 +2,10 @@
 
 Generic file upload infrastructure. Please email me for API key.
 
-### Motivation
+## Motivation
 AWS S3 is a hassle to work with. Why not abstract it with an API?
 
-### API Endpoints
+## API Endpoints
 
 #### Single File Upload
 
@@ -27,7 +27,7 @@ AWS S3 is a hassle to work with. Why not abstract it with an API?
 - HTTP Authorization Header: Bearer xxxxxxxx
 - Response: List of All File Attributes
 
-### Project Roadmap
+## Project Roadmap
 
 - Create Image Optimizations (Compression, Preview, etc)
 - Create Bulk Upload Routes
