@@ -12,5 +12,10 @@ app.use(cors()); // TODO(ekzhang): revisit CORS headers
 // API Routes
 app.use("/api/file", fileRouter);
 
+// send redirect
+app.get("*", (_, res) => {
+  res.redirect("https://github.com/Orang-utan/file-upload-api");
+});
+
 // Creating the HTTP server
 export const server = http.createServer(app);
