@@ -18,7 +18,7 @@ HTTP Authorization Header: Bearer xxxxxxxx
 HTTP Body: Include File Key Name
 Response: Success or Failure
 
-#### Get ALL Files
+#### Get All Files
 
 GET: "https://orangutan-file-upload-api.herokuapp.com/api/file/all"
 HTTP Authorization Header: Bearer xxxxxxxx
