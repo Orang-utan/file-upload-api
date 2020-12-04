@@ -9,23 +9,23 @@ AWS S3 is a hassle to work with. Why not abstract it with an API?
 
 #### Single File Upload
 
-POST: "https://orangutan-file-upload-api.herokuapp.com/api/file/upload"
-HTTP Authorization Header: Bearer xxxxxxxx
-HTTP Body: Include File Key Val Pair
-Response: File Upload URL
+- POST: "https://orangutan-file-upload-api.herokuapp.com/api/file/upload"
+- HTTP Authorization Header: Bearer xxxxxxxx
+- HTTP Body: Include File Key Val Pair
+- Response: File Upload URL
 
 #### Delete Single File
 
-DELETE: "https://orangutan-file-upload-api.herokuapp.com/api/file/"
-HTTP Authorization Header: Bearer xxxxxxxx
-HTTP Body: Include File Key Name
-Response: Success or Failure
+- DELETE: "https://orangutan-file-upload-api.herokuapp.com/api/file/"
+- HTTP Authorization Header: Bearer xxxxxxxx
+- HTTP Body: Include File Key Name
+- Response: Success or Failure
 
 #### Get All Files
 
-GET: "https://orangutan-file-upload-api.herokuapp.com/api/file/all"
-HTTP Authorization Header: Bearer xxxxxxxx
-Response: List of All File Attributes
+- GET: "https://orangutan-file-upload-api.herokuapp.com/api/file/all"
+- HTTP Authorization Header: Bearer xxxxxxxx
+- Response: List of All File Attributes
 
 ### Project Roadmap
 
