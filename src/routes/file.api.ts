@@ -1,6 +1,6 @@
 import express from "express";
 import S3 = require("aws-sdk/clients/s3");
-import s3 from "../s3";
+import s3Storage from "../s3Storage";
 import multer from "multer";
 import errorHandler from "./error";
 import auth from "../middleware/auth";
@@ -26,14 +26,16 @@ router.post("/upload", auth, upload.single("file"), (req, res) => {
     Key: filename,
     Body: bufferStream,
   };
-  return res.status(200).json({ success: true });
 
-  // s3.upload(uploadParams, (err: Error, data: S3.ManagedUpload.SendData) => {
-  //   if (err) return errorHandler(res, "An error occured with AWS", "500");
-  //   return res
-  //     .status(200)
-  //     .json({ success: true, data: { fileUrl: data.Location } });
-  // });
+  s3Storage.upload(
+    uploadParams,
+    (err: Error, data: S3.ManagedUpload.SendData) => {
+      if (err) return errorHandler(res, "An error occured with AWS", "500");
+      return res
+        .status(200)
+        .json({ success: true, data: { fileUrl: data.Location } });
+    }
+  );
 });
 
 /* delete one file */
@@ -44,29 +46,24 @@ router.delete("/", auth, (req, res) => {
     Bucket: AWS_S3_BUCKET_NAME,
     Key: filename,
   };
-  return res.status(200).json({ success: true });
 
-  // s3.deleteObject(uploadParams, (err: AWS.AWSError) => {
-  //   if (err) return errorHandler(res, "An error occured with AWS", "500");
-  //   return res
-  //     .status(200)
-  //     .json({ success: true, message: "Object successfully deleted" });
-  // });
+  s3Storage.deleteObject(uploadParams, (err: Error) => {
+    if (err) return errorHandler(res, "An error occured with AWS", "500");
+    return res
+      .status(200)
+      .json({ success: true, message: "Object successfully deleted" });
+  });
 });
 
 /* get all object keys */
 router.get("/all", auth, (_, res) => {
   const params = { Bucket: AWS_S3_BUCKET_NAME };
-  return res.status(200).json({ success: true });
 
-  // s3.listObjects(
-  //   params,
-  //   (err: AWS.AWSError, data: AWS.S3.ListObjectsOutput) => {
-  //     if (err) return errorHandler(res, "An error occured with AWS", "500");
+  s3Storage.listObjects(params, (err: Error, data: S3.ListObjectsOutput) => {
+    if (err) return errorHandler(res, "An error occured with AWS", "500");
 
-  //     return res.status(200).json({ success: true, data });
-  //   }
-  // );
+    return res.status(200).json({ success: true, data });
+  });
 });
 
 export default router;

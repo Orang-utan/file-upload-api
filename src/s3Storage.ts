@@ -5,10 +5,10 @@ import {
   AWS_REGION,
 } from "./utils/config";
 
-const s3 = new S3({
+const s3Storage = new S3({
   accessKeyId: AWS_ACCESS_KEY_ID,
   secretAccessKey: AWS_SECRET_ACCESS_KEY,
   region: AWS_REGION,
 });
 
-export default s3;
+export default s3Storage;
