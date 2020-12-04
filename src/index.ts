@@ -1,14 +1,18 @@
 import "./utils/config";
 import { server } from "./server";
 import AWS from "aws-sdk";
-import { AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY } from "./utils/config";
+import {
+  AWS_ACCESS_KEY_ID,
+  AWS_SECRET_ACCESS_KEY,
+  AWS_REGION,
+} from "./utils/config";
 
 const main = async () => {
   // configure AWS
   AWS.config.update({
     accessKeyId: AWS_ACCESS_KEY_ID,
     secretAccessKey: AWS_SECRET_ACCESS_KEY,
-    region: "us-east-1",
+    region: AWS_REGION,
   });
 
   const port = process.env.PORT || 5000;
