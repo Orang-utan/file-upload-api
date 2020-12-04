@@ -2,6 +2,7 @@ import express from "express";
 import AWS from "aws-sdk";
 import multer from "multer";
 import errorHandler from "./error";
+import auth from "../middleware/auth";
 import { AWS_S3_BUCKET_NAME } from "../utils/config";
 
 const router = express.Router();
@@ -12,7 +13,7 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 /* upload one file */
-router.post("/upload", upload.single("file"), (req, res) => {
+router.post("/upload", auth, upload.single("file"), (req, res) => {
   if (!req.file) return errorHandler(res, "Invalid file.", "400");
 
   const timestamp = new Date().getTime();
@@ -34,7 +35,7 @@ router.post("/upload", upload.single("file"), (req, res) => {
 });
 
 /* delete one file */
-router.delete("/", (req, res) => {
+router.delete("/", auth, (req, res) => {
   const filename = req.body.filename;
 
   const uploadParams = {
@@ -51,7 +52,7 @@ router.delete("/", (req, res) => {
 });
 
 /* get all object keys */
-router.get("/all", (req, res) => {
+router.get("/all", auth, (_, res) => {
   const params = { Bucket: AWS_S3_BUCKET_NAME };
   s3.listObjects(
     params,
