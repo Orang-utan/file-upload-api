@@ -13,7 +13,7 @@ Response: File Upload URL
 
 #### Delete Single File
 
-DElETE: "https://orangutan-file-upload-api.herokuapp.com/api/file/"
+DELETE: "https://orangutan-file-upload-api.herokuapp.com/api/file/"
 HTTP Authorization Header: Bearer xxxxxxxx
 HTTP Body: Include File Key Name
 Response: Success or Failure
