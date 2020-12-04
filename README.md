@@ -23,3 +23,9 @@ Response: Success or Failure
 GET: "https://orangutan-file-upload-api.herokuapp.com/api/file/all"
 HTTP Authorization Header: Bearer xxxxxxxx
 Response: List of All File Attributes
+
+### Project Roadmap
+
+- Create Image Optimizations (Compression, Preview, etc)
+- Create Bulk Upload Routes
+- Create Project Specific IAM Managemnt System
