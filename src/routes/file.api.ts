@@ -1,12 +1,12 @@
 import express from "express";
-// import AWS from "aws-sdk";
+import S3 = require("aws-sdk/clients/s3");
+import s3 from "../s3";
 import multer from "multer";
 import errorHandler from "./error";
 import auth from "../middleware/auth";
 import { AWS_S3_BUCKET_NAME } from "../utils/config";
 
 const router = express.Router();
-// const s3 = new AWS.S3();
 
 // config multer
 // in memory strategy below
@@ -26,10 +26,9 @@ router.post("/upload", auth, upload.single("file"), (req, res) => {
     Key: filename,
     Body: bufferStream,
   };
-
   return res.status(200).json({ success: true });
 
-  // s3.upload(uploadParams, (err: Error, data: AWS.S3.ManagedUpload.SendData) => {
+  // s3.upload(uploadParams, (err: Error, data: S3.ManagedUpload.SendData) => {
   //   if (err) return errorHandler(res, "An error occured with AWS", "500");
   //   return res
   //     .status(200)
