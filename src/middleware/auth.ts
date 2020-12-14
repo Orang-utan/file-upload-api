@@ -1,6 +1,5 @@
 import express from "express";
 import errorHandler from "../routes/error";
-import { ADMIN_API_KEY } from "../utils/config";
 
 const auth = (
   req: express.Request,
